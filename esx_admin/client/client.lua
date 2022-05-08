@@ -19,6 +19,11 @@ AddEventHandler('esx:setJob', function(job)
   PlayerData.job = job
 end)
 
+RegisterNetEvent('esx_admin:OpenMenu')
+AddEventHandler('esx_admin:OpenMenu', function()
+    OpenMenu()
+end)
+
 function OpenMenu()
     isMenuOpen = true
     ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'admin_menu', {
@@ -161,7 +166,3 @@ function OpenMenu()
 		menu.close()
 	end)
 end
-
-RegisterCommand('a:menu', function()
-    OpenMenu()
-end, false)
