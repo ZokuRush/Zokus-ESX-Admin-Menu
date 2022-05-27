@@ -1,3 +1,1 @@
-Howdy yall, yet again its zoku.. so Im not gonna stand here all day and tell you everything about this menu cause its pretty simple but got a lot of features at the same time. Ive been looking for a good ESX admin menu but of course there either leaked or payed... So I made one! I went took the time of learning ESX's menu default thing which was a pain in my a**. But this script is for sure not done yet and needs a LOT of work before its ready for public servers. I got most things working but some things Im working with making sure its gonna work good and well. Ill be keeping this updated as much as I can and really want to. I really dont wanna give support but if ur kind and not a jerk then maybe just maybe I will help you. ;)
-
-hmu on twitter if u need something from me @ZokuRush
+This wasnt abandoned just yet.. It just needs a LOT of work and I dont got the time and effort to make it happen. So If you wish to use this as a base or something go for it.
