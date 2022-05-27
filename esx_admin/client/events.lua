@@ -20,6 +20,18 @@ AddEventHandler('esx:setJob', function(job)
   PlayerData.job = job
 end)
 
+-- Revive Player
+RegisterNetEvent('esx_admin:RevivePlayer')
+AddEventHandler('esx_admin:RevivePlayer', function()
+	SetEntityHealth(player, GetEntityMaxHealth(player))
+    ClearPedBloodDamage(player)
+    SetPlayerSprint(PlayerId(), true)
+    TriggerEvent('mythic_hospital:client:RemoveBleed')
+    TriggerEvent('mythic_hospital:client:ResetLimbs')
+    TriggerEvent('esx_ambulancejob:revive')
+	exports['mythic_notify']:DoHudText('success', 'Health Reset!')
+end)
+
 -- Heal Player
 RegisterNetEvent('esx_admin:HealPlayer')
 AddEventHandler('esx_admin:HealPlayer', function()
@@ -54,8 +66,8 @@ AddEventHandler('esx_admin:GetCarKeys', function(plate)
 end)
 
 -- Reapir Car
-RegisterNetEvent('esx_admin:repair_vehicle')
-AddEventHandler('esx_admin:repair_vehicle', function()
+RegisterNetEvent('esx_admin:RepairVehicle')
+AddEventHandler('esx_admin:RepairVehicle', function()
 	local playerPed = PlayerPedId()
 	if IsPedInAnyVehicle(playerPed, false) then
 		local vehicle = GetVehiclePedIsIn(playerPed, false)
@@ -69,8 +81,8 @@ AddEventHandler('esx_admin:repair_vehicle', function()
 end)
 
 -- Clean Car
-RegisterNetEvent('esx_admin:clean_vehicle')
-AddEventHandler('esx_admin:clean_vehicle', function()
+RegisterNetEvent('esx_admin:CleanVehicle')
+AddEventHandler('esx_admin:CleanVehicle', function()
 	local playerPed = PlayerPedId()
 	if IsPedInAnyVehicle(playerPed, false) then
 		local vehicle = GetVehiclePedIsIn(playerPed, false)
@@ -83,8 +95,8 @@ end)
 
 -- Noclip
 local noclip = false
-RegisterNetEvent("esx_admin:noclip")
-AddEventHandler("esx_admin:noclip", function(input)
+RegisterNetEvent("esx_admin:Noclip")
+AddEventHandler("esx_admin:Noclip", function(input)
     local player = PlayerId()
 	local ped = PlayerPedId
 	
@@ -147,8 +159,8 @@ AddEventHandler("esx_admin:noclip", function(input)
 end)
 
 -- TPM
-RegisterNetEvent("esx_admin:tpm")
-AddEventHandler("esx_admin:tpm", function()
+RegisterNetEvent("esx_admin:TPM")
+AddEventHandler("esx_admin:TPM", function()
     local WaypointHandle = GetFirstBlipInfoId(8)
     if DoesBlipExist(WaypointHandle) then
         local waypointCoords = GetBlipInfoIdCoord(WaypointHandle)
@@ -219,8 +231,8 @@ ToggleCoords = function()
 end
 
 -- Flipcar
-RegisterNetEvent('esx_admin:flipcar')
-AddEventHandler('esx_admin:flipcar', function()
+RegisterNetEvent('esx_admin:FlipVehicle')
+AddEventHandler('esx_admin:FlipVehicle', function()
 	local ped = PlayerPedId()
 	local pedcoords = GetEntityCoords(ped)
 	VehicleData = ESX.Game.GetClosestVehicle()
@@ -231,8 +243,8 @@ AddEventHandler('esx_admin:flipcar', function()
 end)
 
 -- Delete Vehicle
-RegisterNetEvent("esx_admin:delete_vehicle")
-AddEventHandler("esx_admin:delete_vehicle", function()
+RegisterNetEvent("esx_admin:DeleteVehicle")
+AddEventHandler("esx_admin:DeleteVehicle", function()
     local ped = GetPlayerPed( -1 )
 
     if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then 
@@ -281,8 +293,8 @@ function GetVehicleInDirection( entFrom, coordFrom, coordTo )
 end
 
 -- Max Fuel
-RegisterNetEvent('esx_admin:max_fuel')
-AddEventHandler('esx_admin:max_fuel', function(vehicle)
+RegisterNetEvent('esx_admin:MaxFuel')
+AddEventHandler('esx_admin:MaxFuel', function(vehicle)
 	local playerPed = PlayerPedId()
 	if IsPedInAnyVehicle(playerPed, false) then
 		local vehicle = GetVehiclePedIsIn(playerPed, false)
@@ -294,10 +306,10 @@ AddEventHandler('esx_admin:max_fuel', function(vehicle)
 end)
 
 -- Godmode
-RegisterNetEvent('esx_admin:godmode')
+RegisterNetEvent('esx_admin:Godmode')
 local godmode = false
 
-AddEventHandler('esx_admin:godmode', function()
+AddEventHandler('esx_admin:Godmode', function()
 	local playerPed = GetPlayerPed(-1)
 
 	if not godmode then

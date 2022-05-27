@@ -36,13 +36,13 @@ function OpenMenu()
     }}, function(data, menu)
         if data.current.value == 'player_control' then
             local elements = {
-					{label = ('Ban Player'), value = 'ban_player'},
-                    {label = ('Kick Player'), value = 'kick_player'},
-                    {label = ('Bring Player'), value = 'bring_player'},
-                    {label = ('Teleport To Player'), value = 'teleport_to_player'},
-                    {label = ('Heal Player'), value = 'heal_player'},
-                    {label = ('Reset Hunger/Thirst'), value = 'reset_food_thirst'},
-                    {label = ('Godmode'), value = 'godmode'}
+					{label = ('Ban Player'), value = 'BanPlayer'},
+                    {label = ('Kick Player'), value = 'KickPlayer'},
+                    {label = ('Bring Player'), value = 'BringPlayer'},
+                    {label = ('Teleport To Player'), value = 'TeleportToPlayer'},
+                    {label = ('Revive Player'), value = 'RevivePlayer'},
+                    {label = ('Heal Player'), value = 'HealPlayer'},
+                    {label = ('Reset Hunger/Thirst'), value = 'ResetFoodThirst'}
             }
 
             ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'player_control', {
@@ -51,40 +51,40 @@ function OpenMenu()
                 elements = elements
             }, function(data, menu)
 
-                if data.current.value == 'ban_player' then
+                if data.current.value == 'BanPlayer' then
                     -- To do
                 end
-                if data.current.value == 'kick_player' then
+                if data.current.value == 'KickPlayer' then
                     -- To do
                 end
-                if data.current.value == 'bring_player' then
+                if data.current.value == 'BringPlayer' then
                     -- To do
                 end
-                if data.current.value == 'teleport_to_player' then
+                if data.current.value == 'TeleportToPlayer' then
                     -- To do
                 end
-                if data.current.value == 'heal_player' then
+                if data.current.value == 'RevivePlayer' then
+                    TriggerEvent('esx_admin:RevivePlayer')
+                end
+                if data.current.value == 'HealPlayer' then
                     TriggerEvent('esx_admin:HealPlayer')
                 end
-                if data.current.value == 'reset_food_thirst' then
+                if data.current.value == 'ResetFoodThirst' then
                     TriggerEvent('esx_admin:ResetFoodThirst')
-                end
-                if data.current.value == 'godmode' then
-                    TriggerEvent('esx_admin:godmode')
                 end
             end, function(data, menu)
                 menu.close()
             end)
         elseif data.current.value == 'vehicle_control' then
             local elements = {
-					{label = ('Get Keys'), value = 'get_car_keys'},
-                    {label = ('Spawn Vehicle (Model)'), value = 'spawn_vehicle'},
-                    {label = ('Delete Vehicle'), value = 'delete_vehicle'},
-                    {label = ('Vehicle Mods'), value = 'vehicle_mods'},
-                    {label = ('Repair Vehicle'), value = 'repair_vehicle'},
-                    {label = ('Clean Vehicle'), value = 'clean_vehicle'},
-                    {label = ('Flip Vehicle'), value = 'flip_vehicle'},
-                    {label = ('Max Fuel'), value = 'max_fuel'}
+					{label = ('Get Keys'), value = 'GetCarKeys'},
+                    {label = ('Spawn Vehicle (Model)'), value = 'SpawnVehicle'},
+                    {label = ('Delete Vehicle'), value = 'DeleteVehicle'},
+                    {label = ('Vehicle Mods'), value = 'VehicleMods'},
+                    {label = ('Repair Vehicle'), value = 'RepairVehicle'},
+                    {label = ('Clean Vehicle'), value = 'CleanVehicle'},
+                    {label = ('Flip Vehicle'), value = 'FlipVehicle'},
+                    {label = ('Max Fuel'), value = 'MaxFuel'}
             }
 
             ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_control', {
@@ -93,42 +93,44 @@ function OpenMenu()
                 elements = elements
             }, function(data, menu)
 
-                if data.current.value == 'get_car_keys' then
+                if data.current.value == 'GetCarKeys' then
                     TriggerEvent('esx_admin:GetCarKeys')
                 end
-                if data.current.value == 'spawn_vehicle' then
+                if data.current.value == 'SpawnVehicle' then
                     -- To do
                 end
-                if data.current.value == 'delete_vehicle' then
-                    TriggerEvent('esx_admin:delete_vehicle')
+                if data.current.value == 'DeleteVehicle' then
+                    TriggerEvent('esx_admin:DeleteVehicle')
                 end
-                if data.current.value == 'vehicle_mods' then
+                if data.current.value == 'VehicleMods' then
                     -- To do
                 end
-                if data.current.value == 'repair_vehicle' then
-                    TriggerEvent('esx_admin:repair_vehicle')
+                if data.current.value == 'RepairVehicle' then
+                    TriggerEvent('esx_admin:RepairVehicle')
                 end
-                if data.current.value == 'clean_vehicle' then
-                    TriggerEvent('esx_admin:clean_vehicle')
+                if data.current.value == 'CleanVehicle' then
+                    TriggerEvent('esx_admin:CleanVehicle')
                 end
-                if data.current.value == 'flip_vehicle' then
-                    TriggerEvent('esx_admin:flipcar')
+                if data.current.value == 'FlipVehicle' then
+                    TriggerEvent('esx_admin:FlipVehicle')
                 end
-                if data.current.value == 'max_fuel' then
-                    TriggerEvent('esx_admin:max_fuel')
+                if data.current.value == 'MaxFuel' then
+                    TriggerEvent('esx_admin:MaxFuel')
                 end
             end, function(data, menu)
                 menu.close()
             end)
         elseif data.current.value == 'misc' then
             local elements = {
-					{label = ('Spawn Money'), value = 'spawn_money'},
-                    {label = ('Spawn Item'), value = 'spawn_item'},
-                    {label = ('Spawn Weapon'), value = 'spawn_weapon'},
-                    {label = ('Noclip'), value = 'noclip'},
-                    {label = ('Teleport To Waypoint'), value = 'tpm'},
-                    {label = ('Edit Player Model'), value = 'player_skin'},
-                    {label = ('Toggle Coords'), value = 'coords'}
+					{label = ('Spawn Money'), value = 'SpawnMoney'},
+                    {label = ('Spawn Item'), value = 'SpawnItem'},
+                    {label = ('Spawn Weapon'), value = 'SpawnWeapon'},
+                    {label = ('Teleport To Waypoint'), value = 'TPM'},
+                    {label = ('Edit Player Model'), value = 'PlayerSkin'},
+                    {label = ('Toggle Coords'), value = 'Coords'},
+                    {label = ('Max Ammo'), value = 'MaxAmmo'},
+                    {label = ('Noclip'), value = 'Noclip'},
+                    {label = ('Godmode'), value = 'Godmode'}
             }
 
             ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'misc', {
@@ -137,26 +139,32 @@ function OpenMenu()
                 elements = elements
             }, function(data, menu)
 
-                if data.current.value == 'spawn_money' then
+                if data.current.value == 'SpawnMoney' then
                     -- To do
                 end
-                if data.current.value == 'spawn_item' then
+                if data.current.value == 'SpawnItem' then
                     -- To do
                 end
-                if data.current.value == 'spawn_weapon' then
+                if data.current.value == 'SpawnWeapon' then
                     -- To do
                 end
-                if data.current.value == 'noclip' then
-                    TriggerEvent('esx_admin:noclip')
+                if data.current.value == 'TPM' then
+                    TriggerEvent('esx_admin:TPM')
                 end
-                if data.current.value == 'tpm' then
-                    TriggerEvent('esx_admin:tpm')
-                end
-                if data.current.value == 'player_skin' then
+                if data.current.value == 'PlayerSkin' then
                     TriggerEvent('esx_skin:openSaveableMenu')
                 end
-                if data.current.value == 'coords' then
+                if data.current.value == 'Coords' then
                     ToggleCoords()
+                end
+                if data.current.value == 'MaxAmmo' then
+                    -- To do
+                end
+                if data.current.value == 'Noclip' then
+                    TriggerEvent('esx_admin:Noclip')
+                end
+                if data.current.value == 'Godmode' then
+                    TriggerEvent('esx_admin:Godmode')
                 end
 			end, function(data, menu)
 				menu.close()
