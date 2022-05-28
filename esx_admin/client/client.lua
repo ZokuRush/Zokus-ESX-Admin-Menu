@@ -32,7 +32,7 @@ function OpenMenu()
 		elements = {
         {label = "Player Control", value = 'player_control'},
         {label = "Vehicle Control", value = 'vehicle_control'},
-        {label = "Misc", value = 'misc'}
+        {label = "Developer Options", value = 'developer_options'}
     }}, function(data, menu)
         if data.current.value == 'player_control' then
             local elements = {
@@ -120,32 +120,24 @@ function OpenMenu()
             end, function(data, menu)
                 menu.close()
             end)
-        elseif data.current.value == 'misc' then
+        elseif data.current.value == 'developer_options' then
             local elements = {
-					{label = ('Spawn Money'), value = 'SpawnMoney'},
                     {label = ('Spawn Item'), value = 'SpawnItem'},
-                    {label = ('Spawn Weapon'), value = 'SpawnWeapon'},
                     {label = ('Teleport To Waypoint'), value = 'TPM'},
                     {label = ('Edit Player Model'), value = 'PlayerSkin'},
                     {label = ('Toggle Coords'), value = 'Coords'},
-                    {label = ('Max Ammo'), value = 'MaxAmmo'},
-                    {label = ('Noclip'), value = 'Noclip'},
-                    {label = ('Godmode'), value = 'Godmode'}
+                    {label = ('Toggle Noclip'), value = 'Noclip'},
+                    {label = ('Toggle Godmode'), value = 'Godmode'},
+                    {label = ('Toggle Invisible'), value = 'Invisible'}
             }
 
-            ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'misc', {
+            ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'developer_options', {
                 title    = 'Admin Menu',
                 align    = 'top-left',
                 elements = elements
             }, function(data, menu)
 
-                if data.current.value == 'SpawnMoney' then
-                    -- To do
-                end
                 if data.current.value == 'SpawnItem' then
-                    -- To do
-                end
-                if data.current.value == 'SpawnWeapon' then
                     -- To do
                 end
                 if data.current.value == 'TPM' then
@@ -157,14 +149,14 @@ function OpenMenu()
                 if data.current.value == 'Coords' then
                     ToggleCoords()
                 end
-                if data.current.value == 'MaxAmmo' then
-                    -- To do
-                end
                 if data.current.value == 'Noclip' then
                     TriggerEvent('esx_admin:Noclip')
                 end
                 if data.current.value == 'Godmode' then
                     TriggerEvent('esx_admin:Godmode')
+                end
+                if data.current.value == 'Invisible' then
+                    TriggerEvent('esx_admin:Invisible')
                 end
 			end, function(data, menu)
 				menu.close()

@@ -298,7 +298,7 @@ AddEventHandler('esx_admin:MaxFuel', function(vehicle)
 	local playerPed = PlayerPedId()
 	if IsPedInAnyVehicle(playerPed, false) then
 		local vehicle = GetVehiclePedIsIn(playerPed, false)
-		exports["LegacyFuel"]:SetFuel(vehicle, 100)
+		exports["ox_fuel"]:setFuel(vehicle, 100)
 		exports['mythic_notify']:DoHudText('success', 'Topped off the tank!')
 	else
         exports['mythic_notify']:DoHudText('error', 'There is no vehicle(s) nearby!')
@@ -343,6 +343,34 @@ Citizen.CreateThread(function() --Godmode
 			SetEntityProofs(GetPlayerPed(-1), false, false, false, false, false, false, false, false)
 			SetEntityOnlyDamagedByPlayer(GetPlayerPed(-1), true)
 			SetEntityCanBeDamaged(GetPlayerPed(-1), true)
+		end
+	end
+end)
+
+-- Invisible
+RegisterNetEvent('esx_admin:Invisible')
+local Invisible = false
+
+AddEventHandler('esx_admin:Invisible', function()
+	local playerPed = GetPlayerPed(-1)
+
+	if not Invisible then
+	    Invisible = true
+	    exports['mythic_notify']:DoHudText('success', 'Invisible is on!')
+	elseif Invisible then
+	    Invisible = false
+		exports['mythic_notify']:DoHudText('error', 'Invisible is off!')
+	end
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(1)
+
+		if Invisible then
+			SetEntityVisible(GetPlayerPed(-1), false)
+		elseif not Invisible then
+			SetEntityVisible(GetPlayerPed(-1), true)
 		end
 	end
 end)
