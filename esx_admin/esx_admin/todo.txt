@@ -1,0 +1,2 @@
+- Do events for giving money to player, giving items to player, banning players, kicking players, bringing players, vehicle spawning, vehicle mods, spawning weapons
+- Noclip isnt making the ped invisible and doesnt take the car with you when ur in noclip
